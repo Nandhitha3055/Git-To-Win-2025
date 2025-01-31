@@ -1,0 +1,12 @@
+s = input().split()
+v = ["A","a","E","e","I","i","o","O","U","u"]
+for i in range(len(s)):
+    for j in range(len(s[i])):
+        val = list(s[i])
+        if val[j] in v:
+            val[j] = "*"
+        s[i] = "".join(val)    
+    if i % 2 != 0:
+        s[i] = s[i][::-1]
+        
+print(" ".join(s))      
