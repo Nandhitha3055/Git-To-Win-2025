@@ -1,0 +1,88 @@
+#1. Grid method implementation :
+#Create a 10x10 grid (2D array) and implement a Python program that draws a specific shape (e.g., triangle, square, or circle) based 
+#on dynamic inputs like shape type, size, and position. HINT: The grid should be initialized with 0s. The shape should be represented using the digit 1.
+
+def Square(grid,x,y,s):
+    for i in range(x,x+s):
+        for j in range(y,y+s):
+            grid[i][j] = 1
+    for i in grid:
+        print(i)
+
+def Triangle(grid,x,y,s):
+    val = 1
+    for i in range(x,x+s):
+        for j in range(val):
+            grid[i][y+j] = 1
+        val += 1    
+    for i in grid:
+        print(i)       
+        
+def Circle(grid,x,y,s):
+    for i in range(x-(s-1),x+(s)):
+        for j in range(y,y+s):
+            if i ==x-(s-1) and (j == (y+s)-1 or j == y):
+                continue
+            elif i == (x+s)-1 and (j == (y+s)-1 or j == y):
+                continue
+            else:
+                grid[i][j] = 1
+    for i in grid:
+        print(i)               
+
+
+
+grid = [[0 for i in range(10)] for i in range(10)]
+Type = input("Square/triangle/circle : ")
+x = int(input("enter the x coord : "))
+y = int(input("enter the y coord : "))
+s = int(input("enter the size : "))
+if Type == "S" or Type == "s":
+    Square(grid,x,y,s)
+elif Type == "T" or Type=="t":
+    Triangle(grid,x,y,s)
+else:
+    Circle(grid,x,y,s)
+
+OUPTUT
+Square/triangle/circle : Triangle
+enter the x coord : 5
+enter the y coord : 5
+enter the size : 5
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 1, 1, 0]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+[0, 0, 0, 0, 0, 0, 1, 1, 1, 0]
+
+
+
+
+
+#2.String reverse :
+#Write a Python function that takes an input string and outputs the string in a specific pattern: HINT: Reverse every second word in the string. Replace vowels in every alternate word with.
+
+
+s = input().split()
+v = ["A","a","E","e","I","i","o","O","U","u"]
+for i in range(len(s)):
+    for j in range(len(s[i])):
+        val = list(s[i])
+        if val[j] in v:
+            val[j] = "*"
+        s[i] = "".join(val)    
+    if i % 2 != 0:
+        s[i] = s[i][::-1]
+        
+print(" ".join(s))      
+
+OUTPUT:
+
+Entert a string: Hello World
+H*ll* dlr*W
+
